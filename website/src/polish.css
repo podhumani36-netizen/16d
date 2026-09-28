@@ -1,0 +1,612 @@
+/* Visual polish layered over styles.css: photo banners, hero collage,
+   logo marquee, photo cards and hover motion. Loaded after styles.css. */
+
+/* Eyebrow gets a short green rule before it */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.eyebrow::before,
+.section-head--center .eyebrow::after {
+  content: '';
+  width: 28px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--green);
+}
+
+/* Highlighted words in headings: green with a soft highlighter swash */
+.accent {
+  background: linear-gradient(
+    transparent 68%,
+    rgba(124, 194, 66, 0.28) 68%,
+    rgba(124, 194, 66, 0.28) 92%,
+    transparent 92%
+  );
+}
+
+/* ---------- Home hero ---------- */
+/* Dark banner: copy on the left, Kavitha's cut-out on a green disc on the right. */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 56px 0 0;
+  color: #cfd3cc;
+  background:
+    radial-gradient(640px 520px at 78% 55%, rgba(124, 194, 66, 0.28), transparent 70%),
+    radial-gradient(520px 380px at 0% 0%, rgba(124, 194, 66, 0.1), transparent 70%),
+    linear-gradient(160deg, #161a14 0%, #0d0f0c 100%);
+  isolation: isolate;
+}
+/* faint dot grid for texture */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 26px 26px;
+  mask-image: linear-gradient(90deg, #000 0%, transparent 60%);
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, transparent 60%);
+}
+.hero__swirl {
+  position: absolute;
+  z-index: -1;
+  width: 680px;
+  left: -260px;
+  bottom: -300px;
+  opacity: 0.035;
+  pointer-events: none;
+  filter: grayscale(1) brightness(3);
+  animation: swirl-spin 90s linear infinite;
+}
+@keyframes swirl-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.hero__grid {
+  position: relative;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 32px;
+  align-items: end;
+}
+.hero__copy {
+  padding-bottom: 64px;
+  animation: hero-in 0.8s ease both;
+}
+
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 22px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(124, 194, 66, 0.35);
+  background: rgba(124, 194, 66, 0.08);
+  color: #d9f0c6;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.hero__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 4px rgba(124, 194, 66, 0.25);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  50% {
+    box-shadow: 0 0 0 8px rgba(124, 194, 66, 0);
+  }
+}
+
+.hero__title {
+  color: #fff;
+  font-size: clamp(2.1rem, 3.9vw, 3.35rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 22px;
+}
+.hero__accent {
+  color: var(--green);
+  background: linear-gradient(90deg, #9bdc5f, var(--green));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero__lead {
+  max-width: 34em;
+  margin: 0;
+  font-size: 1.12rem;
+  line-height: 1.7;
+  color: #b9beb5;
+}
+
+.hero__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 26px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.hero__chips li {
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e8ebe5;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.hero .btn-row {
+  margin-top: 34px;
+}
+.hero .btn--primary {
+  box-shadow: 0 10px 30px -8px rgba(124, 194, 66, 0.6);
+}
+
+.hero__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 40px;
+  margin: 36px 0 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.hero__stats div {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.hero__stats dd {
+  margin: 0;
+  font: 800 2rem/1 var(--font-head);
+  color: #fff;
+}
+.hero__stats dt {
+  margin-top: 6px;
+  font-size: 0.82rem;
+  color: #9aa096;
+  letter-spacing: 0.02em;
+}
+
+/* Visual: green disc, cut-out portrait, floating cards */
+.hero__visual {
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  min-height: 540px;
+  animation: hero-in 0.9s 0.15s ease both;
+}
+.hero__visual::before {
+  /* green disc behind the portrait */
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 40px;
+  width: min(92%, 500px);
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 25%, #b5e585 0%, var(--green) 45%, #4f9a26 100%);
+  box-shadow: 0 40px 80px -30px rgba(124, 194, 66, 0.55);
+}
+.hero__ring {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  width: min(108%, 580px);
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  border: 1px dashed rgba(124, 194, 66, 0.4);
+  animation: swirl-spin 60s linear infinite;
+}
+.hero__person {
+  position: relative;
+  z-index: 1;
+  width: auto;
+  height: min(560px, 100%);
+  max-width: 100%;
+  object-fit: contain;
+  object-position: bottom;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.45));
+}
+
+.hero__card {
+  position: absolute;
+  z-index: 2;
+  margin: 0;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.5);
+  animation: float 6s ease-in-out infinite;
+}
+.hero__card--session {
+  top: 120px;
+  right: -12px;
+  width: 190px;
+  padding: 8px;
+  animation-delay: -3s;
+}
+.hero__card--session img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 9px;
+}
+.hero__card--session figcaption {
+  padding: 8px 4px 2px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.hero__card--name {
+  left: -12px;
+  bottom: 72px;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 20px 14px 18px;
+  border-left: 4px solid var(--green);
+}
+.hero__card--name strong {
+  font: 700 1.02rem/1.2 var(--font-head);
+  color: var(--ink);
+}
+.hero__card--name span {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
+@media (max-width: 1100px) {
+  .hero__card--session {
+    right: 0;
+    width: 160px;
+  }
+}
+@media (max-width: 900px) {
+  .hero {
+    padding-top: 48px;
+  }
+  .hero__grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .hero__copy {
+    padding-bottom: 0;
+  }
+  .hero__stats {
+    gap: 14px 28px;
+  }
+  .hero__stats dd {
+    font-size: 1.6rem;
+  }
+  .hero__visual {
+    min-height: 0;
+    height: 460px;
+    max-width: 440px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .hero__person {
+    height: 440px;
+  }
+  .hero__card--session {
+    top: 40px;
+    width: 130px;
+  }
+  .hero__card--name {
+    bottom: 50px;
+  }
+  .hero__swirl {
+    width: 420px;
+  }
+}
+@media (max-width: 480px) {
+  .hero__stats {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .hero__stats dd {
+    font-size: 1.35rem;
+  }
+  .hero__stats dt {
+    font-size: 0.72rem;
+  }
+  .hero__visual {
+    height: 400px;
+  }
+  .hero__person {
+    height: 380px;
+  }
+  .hero__card--session {
+    display: none;
+  }
+}
+
+/* ---------- Trust strip + logo marquee ---------- */
+.trust {
+  padding: 36px 0 44px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+}
+.trust__title {
+  text-align: center;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+.trust__title strong {
+  color: var(--ink);
+}
+.marquee {
+  display: grid;
+  gap: 16px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+.marquee__row {
+  display: flex;
+  width: max-content;
+  animation: marquee 60s linear infinite;
+}
+.marquee__row--reverse {
+  animation-direction: reverse;
+  animation-duration: 70s;
+}
+.marquee:hover .marquee__row {
+  animation-play-state: paused;
+}
+.marquee__track {
+  display: flex;
+  gap: 16px;
+  padding: 0 8px;
+  margin: 0;
+  list-style: none;
+}
+.marquee__item {
+  display: grid;
+  place-items: center;
+  width: 170px;
+  height: 84px;
+  padding: 12px 18px;
+}
+.marquee__item img {
+  max-width: 100%;
+  max-height: 56px;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.6;
+  transition: filter 0.3s, opacity 0.3s, transform 0.3s;
+}
+.marquee__item:hover img {
+  filter: none;
+  opacity: 1;
+  transform: scale(1.06);
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- Photo cards (industries) ---------- */
+.photo-card {
+  position: relative;
+  display: flex;
+  min-height: 300px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  color: #fff;
+  text-decoration: none;
+  isolation: isolate;
+  box-shadow: var(--shadow);
+}
+.photo-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  transition: transform 0.6s ease;
+}
+.photo-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(10, 20, 5, 0.05) 20%, rgba(10, 20, 5, 0.85) 100%);
+  transition: background 0.3s;
+}
+.photo-card__body {
+  margin-top: auto;
+  padding: 24px;
+}
+.photo-card h3 {
+  color: #fff;
+  font-size: 1.35rem;
+  margin-bottom: 6px;
+}
+.photo-card p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0;
+}
+.photo-card__more {
+  display: inline-block;
+  margin-top: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--green);
+  transform: translateX(-4px);
+  opacity: 0.85;
+  transition: transform 0.25s, opacity 0.25s;
+}
+.photo-card:hover img {
+  transform: scale(1.06);
+}
+.photo-card:hover::after {
+  background: linear-gradient(180deg, rgba(20, 50, 5, 0.15) 10%, rgba(20, 50, 5, 0.9) 100%);
+}
+.photo-card:hover .photo-card__more {
+  transform: none;
+  opacity: 1;
+}
+
+/* ---------- Sections with a photo behind them ---------- */
+.section--photo {
+  position: relative;
+  isolation: isolate;
+}
+.section--photo::before,
+.cta-band::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(120deg, rgba(8, 12, 6, 0.94) 30%, rgba(30, 60, 12, 0.82)),
+    var(--bg-img) center / cover no-repeat;
+}
+.cta-band {
+  isolation: isolate;
+  background: transparent;
+}
+
+/* ---------- Page banners with a photo ---------- */
+.page-hero--photo {
+  position: relative;
+  isolation: isolate;
+  padding: 110px 0 96px;
+  border-bottom: 0;
+  color: #d9d9d9;
+  background: var(--ink);
+}
+.page-hero--photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(100deg, rgba(8, 12, 6, 0.92) 25%, rgba(8, 12, 6, 0.55) 70%, rgba(30, 60, 12, 0.45)),
+    var(--hero-img) center / cover no-repeat;
+}
+.page-hero--photo::after {
+  /* thin green accent line along the bottom */
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--green), transparent);
+}
+.page-hero--photo h1 {
+  color: #fff;
+}
+.page-hero--photo .eyebrow {
+  color: var(--green);
+}
+.page-hero--photo .lead {
+  color: #d0d0d0;
+}
+.page-hero--photo .btn--secondary {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.6);
+}
+.page-hero--photo .btn--secondary:hover {
+  background: #fff;
+  color: var(--ink);
+  border-color: #fff;
+}
+@media (max-width: 700px) {
+  .page-hero--photo {
+    padding: 72px 0 64px;
+  }
+}
+
+/* ---------- Photos: gentle motion on hover ---------- */
+.photo {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.gallery .photo:hover,
+.split .photo:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+.photo-wall li {
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+}
+.photo-wall img {
+  transition: transform 0.5s ease;
+}
+.photo-wall img:hover {
+  transform: scale(1.06);
+}
+.posters img {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.posters li:hover img {
+  transform: translateY(-4px) rotate(-1deg);
+  box-shadow: var(--shadow-hover);
+}
+
+/* ---------- Respect reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .hero__swirl,
+  .hero__ring,
+  .hero__dot,
+  .hero__card,
+  .hero__copy,
+  .hero__visual {
+    animation: none;
+  }
+  .marquee {
+    overflow-x: auto;
+  }
+  .marquee__row {
+    animation: none;
+  }
+  .marquee__track[aria-hidden='true'] {
+    display: none;
+  }
+  .photo-card img,
+  .photo-wall img,
+  .photo {
+    transition: none;
+  }
+}
+
+/* CountUp numbers keep the size/colour of the <strong> around them */
+strong .countup {
+  font: inherit;
+  color: inherit;
+  margin: 0;
+  display: inline;
+}
