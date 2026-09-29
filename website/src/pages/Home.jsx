@@ -43,7 +43,7 @@ export default function Home() {
             </ul>
             <div className="btn-row">
               <ButtonLink to="/contact">Discuss your training needs</ButtonLink>
-              <ButtonLink to={profileLink()} variant="ghost-light">Download corporate profile</ButtonLink>
+              <ButtonLink to={profileLink()} variant="secondary">Download corporate profile</ButtonLink>
             </div>
             <dl className="hero__stats">
               <div>
@@ -95,7 +95,7 @@ export default function Home() {
       </section>
 
       {/* 2. When should you call 16Dimensions? */}
-      <section className="section">
+      <section className="section" id="business-problems">
         <div className="container">
           <SectionHead
             eyebrow="Business problems we solve"
@@ -305,7 +305,7 @@ export default function Home() {
           <div className="grid grid--3">
             {insights.slice(0, 3).map((a, i) => (
               <Reveal key={a.title} delay={i * 80}>
-                <Link to="/insights" className="post">
+                <Link to={a.slug ? `/insights/${a.slug}` : '/insights'} className="post">
                   {a.image && <img className="post__img" src={a.image} alt="" loading="lazy" />}
                   <span className="badge">{a.category}</span>
                   <h3>{a.title}</h3>

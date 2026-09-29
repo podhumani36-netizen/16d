@@ -13,8 +13,10 @@ import IndustryDetail from './pages/IndustryDetail.jsx';
 import Posh from './pages/Posh.jsx';
 import SuccessStories from './pages/SuccessStories.jsx';
 import Insights from './pages/Insights.jsx';
+import Article from './pages/Article.jsx';
 import Contact from './pages/Contact.jsx';
 import Privacy from './pages/Privacy.jsx';
+import Terms from './pages/Terms.jsx';
 import NotFound from './pages/NotFound.jsx';
 
 export default function App() {
@@ -35,8 +37,10 @@ export default function App() {
           <Route path="/posh" element={<Posh />} />
           <Route path="/success-stories" element={<SuccessStories />} />
           <Route path="/insights" element={<Insights />} />
+          <Route path="/insights/:slug" element={<Article />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy-policy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

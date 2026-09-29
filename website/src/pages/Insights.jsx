@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import usePageMeta from '../components/usePageMeta.js';
 import Reveal from '../components/Reveal.jsx';
 import { PageHero, SectionHead, CTASection, ButtonLink } from '../components/Blocks.jsx';
@@ -20,17 +21,29 @@ export default function Insights() {
 
       <section className="section">
         <div className="container grid grid--3">
-          {insights.map((a, i) => (
-            <Reveal key={a.title} as="article" className="post" delay={(i % 3) * 80}>
-              {a.image && <img className="post__img" src={a.image} alt="" loading="lazy" />}
-              <div className="case-card__top">
-                <span className="badge">{a.category}</span>
-                {!a.image && <span className="badge badge--muted">Coming soon</span>}
-              </div>
-              <h3>{a.title}</h3>
-              <p>{a.text}</p>
-            </Reveal>
-          ))}
+          {insights.map((a, i) => {
+            const card = (
+              <>
+                {a.image && <img className="post__img" src={a.image} alt="" loading="lazy" />}
+                <div className="case-card__top">
+                  <span className="badge">{a.category}</span>
+                  {!a.slug && <span className="badge badge--muted">Coming soon</span>}
+                </div>
+                <h3>{a.title}</h3>
+                <p>{a.text}</p>
+                {a.slug && <span className="post__more">Read article →</span>}
+              </>
+            );
+            return (
+              <Reveal key={a.title} as="article" delay={(i % 3) * 80}>
+                {a.slug ? (
+                  <Link to={`/insights/${a.slug}`} className="post">{card}</Link>
+                ) : (
+                  <div className="post">{card}</div>
+                )}
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 

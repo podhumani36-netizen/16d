@@ -5,6 +5,8 @@
 // case studies / testimonials / logos before launch (blueprint section 07 & 13).
 
 // Section 03 — Build the website around business problems.
+
+import { articles } from './articles.js';
 export const painPoints = [
   {
     title: 'Your managers are busy — but not leading',
@@ -115,13 +117,13 @@ export const caseStudies = [
 export const testimonials = [
   {
     sample: true,
-    quote: 'Mrs. Kavitha conducted the training session in a highly professional, clear, and engaging manner. The concepts were explained in a simple and practical way, making them easy to understand. She encouraged active participation and addressed all queries patiently and effectively. The training was highly informative and will be valuable in enhancing our knowledge and skills.',
+    quote: 'The training session was conducted in a highly professional, clear, and engaging manner. The concepts were explained in a simple and practical way, making them easy to understand. Active participation was encouraged, and all queries were addressed patiently and effectively. The training was highly informative and will be valuable in enhancing our knowledge and skills.',
     name: 'M. C. Kuloththungan',
     role: 'NLCIL, Neyveli',
   },
   {
     sample: true,
-    quote: 'I had the opportunity to attend a communication training session conducted by Kavitha ma’am at our Head Office in Ambattur. The program was highly engaging, creative, and focused on practical communication skills that can be applied in day-to-day work. One of the key highlights for me was the topic “React vs Respond,” which gave valuable insight into handling situations with better clarity and control. The interactive approach made the session easy to understand and enjoyable throughout. Overall, this training was very impactful and has helped me improve my confidence and communication effectiveness.',
+    quote: 'I had the opportunity to attend a communication training session at our Head Office in Ambattur. The program was highly engaging, creative, and focused on practical communication skills that can be applied in day-to-day work. One of the key highlights for me was the topic “React vs Respond,” which provided valuable insight into handling situations with better clarity and control. The interactive approach made the session easy to understand and enjoyable throughout. Overall, this training was very impactful and has helped me improve my confidence and communication effectiveness.',
     name: 'Ramesh R',
     role: 'Kolathur KTM Khivraj',
   },
@@ -183,26 +185,15 @@ export const clientLogos = [
 ].map(([name, file]) => ({ name, src: `/images/clients/${file}.png` }));
 
 // Section 10 — Content themes for monthly publishing.
-// Items with an `image` are published articles from the previous site.
+// Published articles (with a `slug`) come from data/articles.js; the rest are upcoming topics.
 export const insights = [
-  {
+  ...articles.map((a) => ({
     category: 'Article',
-    title: 'Communication skills every professional must master in 2025',
-    text: 'The everyday communication habits that set high-performing professionals apart.',
-    image: '/images/insights/communication-skills-2025.jpg',
-  },
-  {
-    category: 'Article',
-    title: 'The power of workplace culture — why it matters more than ever',
-    text: 'How culture shapes performance, retention and the way teams work together every day.',
-    image: '/images/insights/workplace-culture.jpg',
-  },
-  {
-    category: 'Article',
-    title: 'Why soft skills are the real superpower in modern workplaces',
-    text: 'Technical skills get people hired. Soft skills decide how far they go.',
-    image: '/images/insights/why-soft-skills.jpg',
-  },
+    title: a.title,
+    text: a.excerpt,
+    image: a.image,
+    slug: a.slug,
+  })),
   {
     category: 'Video',
     title: '60-second leadership habits for busy managers',

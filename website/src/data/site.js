@@ -5,12 +5,14 @@ export const site = {
   name: '16Dimensions',
   tagline: 'Behavioural Training & People Performance Solutions',
   message: "We Don't Train People. We Transform Behaviour That Drives Performance.",
+  // Shown under the logo in the header and footer.
+  slogan: 'Shaping Leaders, Building Future',
   domain: 'www.16dimensions.com',
 
   email: 'kavitha@16dimensions.com',
-  phone: '+91 99629 32007',
+  phone: '+91 99620 32007',
   // WhatsApp number in international format, digits only.
-  whatsapp: '919962932007',
+  whatsapp: '919962032007',
   location: 'Chennai, Tamil Nadu — training delivered across India',
 
   // TODO: upload the corporate profile PDF to /public/downloads/ and set the path,
@@ -22,12 +24,12 @@ export const site = {
   // a JSON POST. While empty, the enquiry form opens the visitor's email app.
   formEndpoint: '',
 
-  // TODO: add real profile URLs. Empty ones are hidden.
+  // Social profiles, shown in the footer. Empty ones are hidden.
   social: {
-    linkedin: '',
-    instagram: '',
+    linkedin: 'https://www.linkedin.com/company/16dimensions/',
+    instagram: 'https://www.instagram.com/16dimensions_kavitha/',
+    facebook: 'https://www.facebook.com/16Dimensionstraining',
     youtube: '',
-    facebook: '',
   },
 
   // Keep these figures current (blueprint section 07).

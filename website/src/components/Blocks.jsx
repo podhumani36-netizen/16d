@@ -32,12 +32,13 @@ export function SectionHead({ eyebrow, title, intro, center = false }) {
   );
 }
 
-// With `image`, the hero becomes a dark banner over that photo.
-export function PageHero({ eyebrow, title, intro, image, children }) {
+// With `image`, the hero shows that photo on the right, fading into white.
+// `imagePosition` is a CSS background-position, for photos whose subject isn't centred.
+export function PageHero({ eyebrow, title, intro, image, imagePosition, children }) {
   return (
     <section
       className={`page-hero ${image ? 'page-hero--photo' : ''}`}
-      style={image ? { '--hero-img': `url("${image}")` } : undefined}
+      style={image ? { '--hero-img': `url("${image}")`, '--hero-pos': imagePosition } : undefined}
     >
       <div className="container">
         {eyebrow && <p className="eyebrow">{eyebrow}</p>}
@@ -67,9 +68,9 @@ export function CTASection({
         <div className="btn-row">
           <ButtonLink to={primary.to} variant="primary">{primary.label}</ButtonLink>
           {wa ? (
-            <ButtonLink to={wa} variant="ghost-light">WhatsApp enquiry</ButtonLink>
+            <ButtonLink to={wa} variant="secondary">WhatsApp enquiry</ButtonLink>
           ) : (
-            <ButtonLink to="/contact?enquiry=proposal" variant="ghost-light">Request a proposal</ButtonLink>
+            <ButtonLink to="/contact?enquiry=proposal" variant="secondary">Request a proposal</ButtonLink>
           )}
         </div>
       </Reveal>

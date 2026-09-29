@@ -85,7 +85,7 @@ function Icon({ children }) {
 export default function Posh() {
   usePageMeta(
     'PoSH Training & ICC Support',
-    'PoSH training company in Chennai — employee awareness, manager sensitisation, ICC capability building and external ICC member support.'
+    'PoSH trainer and PoSH training company in Chennai — employee awareness, manager sensitisation, ICC capability building and external ICC member support.'
   );
   const checklist = leadMagnets.find((l) => l.title.startsWith('PoSH'));
   const checklistLink = checklist?.file || '/contact?enquiry=checklist';
@@ -186,14 +186,14 @@ export default function Posh() {
 
       {/* FAQs */}
       <section className="section section--tint">
-        <div className="container posh-faq">
-          <Reveal className="posh-faq__intro">
+        <div className="container faq-split">
+          <Reveal className="faq-split__intro">
             <p className="eyebrow">FAQs</p>
             <h2>Common questions from HR teams</h2>
             <p className="lead">Can't find your answer? Talk to us — we'll help you understand what applies to your organisation.</p>
             <ButtonLink to="/contact?enquiry=posh" variant="secondary">Ask a PoSH consultant</ButtonLink>
           </Reveal>
-          <div className="posh-faq__list">
+          <div className="faq-split__list">
             {faqs.map((f, i) => (
               <details key={f.q} className="faq" open={i === 0}>
                 <summary>{f.q}</summary>

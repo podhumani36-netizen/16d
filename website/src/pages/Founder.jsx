@@ -30,7 +30,7 @@ export default function Founder() {
 
   return (
     <>
-      <PageHero image={heroes.founder} eyebrow="Founder" title="Kavitha Sasi" intro="Founder, 16Dimensions · Corporate Trainer · PoSH Consultant" />
+      <PageHero image={heroes.founder} imagePosition="center 12%" eyebrow="Founder" title="Kavitha Sasi" intro="Founder, 16Dimensions · Corporate Trainer · PoSH Consultant" />
 
       <section className="section">
         <div className="container split split--top">
