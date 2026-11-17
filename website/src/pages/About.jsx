@@ -23,12 +23,13 @@ export default function About() {
         <div className="container split">
           <Reveal className="split__copy">
             <p className="eyebrow">Our story</p>
-            <h2>Why 16Dimensions exists</h2>
+            <h2>16Dimensions</h2>
             {/* TODO: replace with the approved company description (blueprint checklist). */}
             <p>
               Too much training is enjoyable on the day and forgotten by Monday. 16Dimensions was founded to close that gap —
               by designing every programme around a real business problem, and by measuring success in what people do
               differently back at work.
+              {' '}Our promise is <strong className="brand-slogan">{site.slogan}</strong>.
             </p>
             <p>
               Over {site.stats[0].value} years and {site.stats[1].value} participants, we have partnered

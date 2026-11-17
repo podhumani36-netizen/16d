@@ -36,8 +36,8 @@ export const site = {
   stats: [
     { value: '15+', label: 'Years of training experience' },
     { value: '130,000+', label: 'People trained' },
-    { value: '6', label: 'Industries served' },
-    { value: '5', label: 'Solution families' },
+    { value: '100+', label: 'Clients' },
+    { value: '3+', label: 'countries' },
   ],
 };
 

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import Reveal from './Reveal.jsx';
-import { whatsappLink } from '../data/site.js';
-import { heroes } from '../data/images.js';
+import { site, whatsappLink } from '../data/site.js';
+import { heroes, brand } from '../data/images.js';
 
 // Small shared building blocks used across pages.
 
@@ -34,17 +34,28 @@ export function SectionHead({ eyebrow, title, intro, center = false }) {
 
 // With `image`, the hero shows that photo on the right, fading into white.
 // `imagePosition` is a CSS background-position, for photos whose subject isn't centred.
-export function PageHero({ eyebrow, title, intro, image, imagePosition, children }) {
+export function PageHero({ eyebrow, title, intro, image, imagePosition, stats = true, children }) {
   return (
     <section
       className={`page-hero ${image ? 'page-hero--photo' : ''}`}
       style={image ? { '--hero-img': `url("${image}")`, '--hero-pos': imagePosition } : undefined}
     >
+      <img className="page-hero__swirl" src={brand.mark} alt="" aria-hidden="true" />
       <div className="container">
         {eyebrow && <p className="eyebrow">{eyebrow}</p>}
         <h1>{title}</h1>
         {intro && <p className="lead">{intro}</p>}
         {children && <div className="btn-row">{children}</div>}
+        {stats && (
+          <dl className="page-hero__stats">
+            {site.stats.slice(0, 3).map((s) => (
+              <div key={s.label}>
+                <dt>{s.label}</dt>
+                <dd>{s.value}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
       </div>
     </section>
   );
@@ -56,6 +67,7 @@ export function CTASection({
   text = 'Tell us about your people-performance challenge. We\'ll suggest a practical programme designed around your teams.',
   primary = { to: '/contact', label: 'Talk to us about training' },
   whatsappText,
+  whatsappLabel = 'WhatsApp enquiry',
 }) {
   const wa = whatsappLink(whatsappText);
   return (
@@ -68,7 +80,7 @@ export function CTASection({
         <div className="btn-row">
           <ButtonLink to={primary.to} variant="primary">{primary.label}</ButtonLink>
           {wa ? (
-            <ButtonLink to={wa} variant="secondary">WhatsApp enquiry</ButtonLink>
+            <ButtonLink to={wa} variant="secondary">{whatsappLabel}</ButtonLink>
           ) : (
             <ButtonLink to="/contact?enquiry=proposal" variant="secondary">Request a proposal</ButtonLink>
           )}
@@ -79,10 +91,10 @@ export function CTASection({
 }
 
 // Visible placeholder where a real photograph should go (blueprint: real photos, minimal stock).
-export function PhotoSlot({ label = 'Training photograph', ratio = '4 / 3', src, alt = '', eager = false }) {
+export function PhotoSlot({ label = 'Training photograph', ratio = '4 / 3', src, alt = '', title, eager = false }) {
   if (src) {
     return (
-      <img className="photo" src={src} alt={alt} style={{ aspectRatio: ratio }} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+      <img className="photo" src={src} alt={alt} title={title} style={{ aspectRatio: ratio }} loading={eager ? 'eager' : 'lazy'} decoding="async" />
     );
   }
   return (

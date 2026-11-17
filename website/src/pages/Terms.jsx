@@ -8,7 +8,7 @@ export default function Terms() {
   usePageMeta('Terms of Use', `Terms for using the ${site.name} website.`);
   return (
     <>
-      <PageHero title="Terms of Use" />
+      <PageHero stats={false} title="Terms of Use" />
       <section className="section">
         <div className="container narrow prose">
           <p><em>Draft — to be reviewed before launch.</em></p>

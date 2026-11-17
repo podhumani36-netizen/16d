@@ -1,10 +1,10 @@
 import usePageMeta from '../components/usePageMeta.js';
 import Reveal from '../components/Reveal.jsx';
-import { PageHero, SectionHead, CTASection, SampleBadge, PhotoSlot } from '../components/Blocks.jsx';
+import { PageHero, SectionHead, CTASection, SampleBadge } from '../components/Blocks.jsx';
 import { useState } from 'react';
 import LogoMarquee from '../components/LogoMarquee.jsx';
 import { caseStudies, testimonials, clientLogos } from '../data/content.js';
-import { photos, trainingPhotos, heroes } from '../data/images.js';
+import { photos, trainingPhotos, solutionTrainingPhotos, successStoryPhotoReplacements, heroes } from '../data/images.js';
 
 // Blueprint case study format: CHALLENGE > INTERVENTION > AUDIENCE > APPROACH > OUTCOME.
 const steps = [
@@ -20,7 +20,14 @@ const WALL_STEP = 12;
 export default function SuccessStories() {
   const [wallCount, setWallCount] = useState(WALL_STEP);
   const featured = new Set(photos.successGallery.map((p) => p.src));
-  const wall = trainingPhotos.filter((p) => !featured.has(p.src));
+  const wall = [
+    ...solutionTrainingPhotos,
+    ...trainingPhotos
+      .filter((p) => !featured.has(p.src)
+        && p.src !== '/images/training/training-065.jpg'
+        && p.src !== '/images/training/training-037.jpg')
+      .map((p) => successStoryPhotoReplacements[p.src] || p),
+  ];
   usePageMeta('Success Stories', 'Case studies, client outcomes and testimonials from 16Dimensions training programmes.');
 
   return (
@@ -73,6 +80,9 @@ export default function SuccessStories() {
 
       {clientLogos.length > 0 && (
         <section className="section section--tight">
+          <div className="container">
+            <p className="brand-slogan">Shaping Leaders, Building Future</p>
+          </div>
           <LogoMarquee logos={clientLogos} />
         </section>
       )}
@@ -82,13 +92,24 @@ export default function SuccessStories() {
           <SectionHead eyebrow="Programme snapshots" title="From the training room" />
           <div className="gallery">
             {photos.successGallery.map((p) => (
-              <PhotoSlot key={p.src} src={p.src} alt={p.alt} />
+              <img
+                key={p.src}
+                className="photo"
+                src={p.src}
+                alt={p.alt}
+                loading="lazy"
+                decoding="async"
+                onError={(event) => {
+                  event.currentTarget.onerror = null;
+                  event.currentTarget.src = '/images/training/training-124.jpg';
+                }}
+              />
             ))}
           </div>
           <ul className="photo-wall">
             {wall.slice(0, wallCount).map((p) => (
               <li key={p.src}>
-                <img src={p.src} alt={p.alt} loading="lazy" decoding="async" />
+                <img src={p.src} alt={p.alt} title={p.title} loading="lazy" decoding="async" />
               </li>
             ))}
           </ul>

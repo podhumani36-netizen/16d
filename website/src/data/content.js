@@ -16,7 +16,7 @@ export const painPoints = [
   {
     title: 'Nobody truly owns the outcome',
     text: 'Build an ownership mindset through role clarity, accountability, confident decision making and collaboration across functions.',
-    link: '/training-solutions/leadership-people-management',
+    link: '/training-solutions/communication-collaboration',
   },
   {
     title: 'Customer experience depends on who is on shift',
@@ -26,12 +26,12 @@ export const painPoints = [
   {
     title: 'Supervisors are technically strong, but struggle with people',
     text: 'Turn experts into people leaders who communicate clearly, resolve conflict, run sharp briefings and keep shifts coordinated.',
-    link: '/industries/manufacturing',
+    link: '/training-solutions/workplace-effectiveness',
   },
   {
     title: 'Teams are working in silos',
     text: 'Improve how people communicate, give feedback, influence and resolve conflict — so teams stop working around each other and start working together.',
-    link: '/training-solutions/communication-collaboration',
+    link: '/training-solutions/workplace-effectiveness',
   },
   {
     title: 'PoSH compliance needs to be done right',
@@ -53,28 +53,32 @@ export const methodology = [
 // Section 06 — PoSH as a standalone vertical.
 export const poshServices = [
   {
-    title: 'Employee PoSH awareness programmes',
-    text: 'Clear, sensitive sessions that help every employee understand what harassment is, know their rights and feel confident raising a concern.',
+    title: 'Employee awareness programmes',
+    text: 'Every employee recognises harassment, knows their rights and speaks up without fear of retaliation.',
   },
   {
     title: 'Manager and supervisor sensitisation',
-    text: 'Equip people leaders to recognise warning signs early, respond correctly and set the standard for respectful behaviour.',
+    text: 'Your first line of defence learns to spot early signs and handle a disclosure correctly.',
   },
   {
-    title: 'ICC member capability building',
-    text: 'Hands-on training in the Act, inquiry procedure, principles of natural justice, documentation and report writing.',
+    title: 'ICC capability building',
+    text: 'Hands-on training in the Act, inquiry procedure, natural justice and report writing, so every decision holds up.',
   },
   {
-    title: 'External ICC member support',
-    text: 'An experienced, independent external member for your Internal Committee, as required under the PoSH Act.',
+    title: 'External member support',
+    text: 'An independent, experienced external member, as the Act requires and fairness demands.',
   },
   {
-    title: 'Inquiry-process guidance and documentation support',
-    text: 'Step-by-step guidance so every inquiry is fair, timely and properly documented.',
+    title: 'Inquiry guidance and documentation',
+    text: 'Expert support at every stage, so each inquiry is fair, on time and fully documented.',
   },
   {
-    title: 'Periodic compliance support',
-    text: 'Annual reporting support, refresher sessions and respectful-workplace communication all year round.',
+    title: 'Annual compliance support',
+    text: 'Policy review, refreshers, annual report drafting and portal updates.',
+  },
+  {
+    title: 'PoSH compliance audit',
+    text: 'A gap assessment of your policy, committee, records and training, with a prioritised fix list.',
   },
 ];
 
@@ -138,19 +142,13 @@ export const testimonials = [
 // Client logos — add only where permission / brand policy allows.
 // Files live in /public/images/clients/. The first 12 are shown on the home page.
 export const clientLogos = [
-  ['Goldman Sachs', 'goldman-sachs'],
-  ['HCL', 'hcl'],
   ['Shell', 'shell'],
   ['DLF', 'dlf'],
-  ['Cushman & Wakefield', 'cushman-wakefield'],
   ['Novotel', 'novotel'],
-  ['British Council', 'british-council'],
-  ['IIT Madras', 'iit-madras'],
   ['Nidec', 'nidec'],
   ['Royal Sundaram', 'royal-sundaram'],
   ['The Park Chennai', 'the-park-chennai'],
   ['Saravana Stores', 'saravana-stores'],
-  ['Anna University', 'anna-university'],
   ['Loyola College', 'loyola-college'],
   ['Grand Chennai by GRT Hotels', 'grand-chennai-by-grt-hotels'],
   ['The Raintree Hotels', 'the-raintree-hotels'],
@@ -159,7 +157,6 @@ export const clientLogos = [
   ['The Park Bangalore', 'the-park-bangalore'],
   ['Greenpark', 'greenpark'],
   ['Usha Fire', 'usha-fire'],
-  ['Repco', 'repco'],
   ['YCH', 'ych'],
   ['Fairways Logistics', 'fairways-logistics'],
   ['PAPL', 'papl'],
@@ -171,8 +168,6 @@ export const clientLogos = [
   ['Cookie Man', 'cookie-man'],
   ['Burgerman', 'burgerman'],
   ['Stella Maris College', 'stella-maris-college'],
-  ['Maris Stella College', 'maris-stella-college'],
-  ["Women's Christian College", 'women-s-christian-college'],
   ['Ethiraj College for Women', 'ethiraj-college-for-women'],
   ['IHM Chennai', 'ihm-chennai'],
   ['Madras School of Social Work', 'madras-school-of-social-work'],
@@ -180,9 +175,22 @@ export const clientLogos = [
   ['Anand Institute of Higher Technology', 'anand-institute-of-higher-technology'],
   ['Sriram Engineering College', 'sriram-engineering-college'],
   // TODO: name these two clients (logos without readable names).
-  ['Client', 'client-emblem'],
   ['Client institution', 'client-crest'],
-].map(([name, file]) => ({ name, src: `/images/clients/${file}.png` }));
+].map(([name, file]) => ({
+  name,
+  src: file === 'burgerman'
+    ? '/images/clients/burgerman-logo.jpg'
+    : `/images/clients/${file}.png`,
+})).concat([
+  { name: 'Creating Wealth for Wellbeing', src: '/images/clients/wealth-for-wellbeing-emblem.jpg' },
+  { name: 'Pallavaa Group', src: '/images/clients/pallavaa-group-logo.jpg' },
+  { name: 'Value Ingredients', src: '/images/clients/value-ingredients-logo.jpg' },
+  { name: 'The Living Room Signature', src: '/images/clients/living-room-signature-logo.jpg' },
+  { name: 'Pushkar Properties', src: '/images/clients/pushkar-properties-logo.jpg' },
+  { name: 'LKS Gold House', src: '/images/clients/lks-gold-house-logo.jpg' },
+  { name: 'Repco Home Finance', src: '/images/clients/repco-home-finance-logo.jpg' },
+  { name: 'Pothys', src: '/images/clients/pothys-logo.jpg' },
+]);
 
 // Section 10 — Content themes for monthly publishing.
 // Published articles (with a `slug`) come from data/articles.js; the rest are upcoming topics.

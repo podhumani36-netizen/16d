@@ -4,7 +4,8 @@ import Reveal from '../components/Reveal.jsx';
 import { PageHero, CTASection, ButtonLink, Checklist, SectionHead } from '../components/Blocks.jsx';
 import { solutions } from '../data/solutions.js';
 import { methodology } from '../data/content.js';
-import { heroes, solutionPhotos } from '../data/images.js';
+import { heroes, solutionPhotos, solutionTrainingPhotos } from '../data/images.js';
+import { site } from '../data/site.js';
 import SolutionIcon from '../components/SolutionIcon.jsx';
 
 // Highlights the family currently in the middle of the screen in the sticky nav.
@@ -38,7 +39,7 @@ export default function Solutions() {
       <PageHero image={heroes.solutions}
         eyebrow="Training solutions"
         title="Programmes built around the outcomes you need"
-        intro="Explore our five solution families and the programmes inside each one. Every programme is tailored to your industry, your audience and your business goals."
+        intro={<>Explore our five solution families and the programmes inside each one. Every programme is tailored to your industry, your audience and your business goals, guided by our promise: <strong className="brand-slogan">{site.slogan}</strong>.</>}
       >
         <ButtonLink to="/contact?enquiry=proposal">Request a customised proposal</ButtonLink>
         <ButtonLink to={`#${solutions[0].slug}`} variant="secondary">Explore the families</ButtonLink>
@@ -47,10 +48,10 @@ export default function Solutions() {
       <div className="family-summary">
         <div className="container family-summary__inner">
           <p>
-            <strong>{solutions.length}</strong> solution families
+            <strong>3+</strong> countries
           </p>
           <p>
-            <strong>{programmeCount}</strong> programmes
+            <strong>5000+</strong> programmes
           </p>
           <p>
             <strong>100%</strong> customised to your context
@@ -150,6 +151,23 @@ export default function Solutions() {
         text="Describe the challenge you are facing and we'll recommend the right mix of programmes for your team."
         primary={{ to: '/contact?enquiry=proposal', label: 'Request a customised proposal' }}
       />
+
+      <section className="section section--tint">
+        <div className="container">
+          <SectionHead
+            eyebrow="Training in action"
+            title="Learning that brings people together"
+            intro="A look inside the workshops, group activities and conversations that make each programme practical."
+          />
+          <ul className="photo-wall">
+            {solutionTrainingPhotos.map((photo) => (
+              <li key={photo.src}>
+                <img src={photo.src} alt={photo.alt} loading="lazy" decoding="async" />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
     </>
   );
 }

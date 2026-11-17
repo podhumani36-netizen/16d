@@ -2,7 +2,7 @@
 // `solutions` are slugs from data/solutions.js, `clients` are names from clientLogos in
 // data/content.js, and `article` is a slug from data/articles.js.
 
-export const industries = [
+const industryList = [
   {
     slug: 'corporate',
     title: 'Corporate',
@@ -483,5 +483,12 @@ export const industries = [
     keyword: 'Customer service training Chennai',
   },
 ];
+
+// Display order follows section 05 of the website blueprint.
+const ORDER = ['manufacturing', 'retail-qsr', 'hospitality', 'corporate', 'education', 'healthcare-services'];
+
+export const industries = [...industryList].sort(
+  (a, b) => ORDER.indexOf(a.slug) - ORDER.indexOf(b.slug)
+);
 
 export const getIndustry = (slug) => industries.find((i) => i.slug === slug);

@@ -69,7 +69,7 @@ const data = [
       'Teams that understand what is expected of them — and own the outcome',
     ],
     audience: 'First-time managers, mid-level managers, team leads and high-potential employees.',
-    industries: ['corporate', 'manufacturing', 'healthcare-services'],
+    industries: ['manufacturing','corporate',  'healthcare-services'],
     article: 'power-of-workplace-culture',
     faqs: [
       {

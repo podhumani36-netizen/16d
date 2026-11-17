@@ -7,7 +7,7 @@ export default function Privacy() {
   usePageMeta('Privacy Policy');
   return (
     <>
-      <PageHero title="Privacy Policy" />
+      <PageHero stats={false} title="Privacy Policy" />
       <section className="section">
         <div className="container narrow prose">
           <p><em>Draft — to be reviewed before launch.</em></p>

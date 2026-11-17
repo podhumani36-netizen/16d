@@ -6,7 +6,7 @@ import { site, profileLink } from '../data/site.js';
 import { solutions } from '../data/solutions.js';
 import { industries } from '../data/industries.js';
 import { painPoints, methodology, caseStudies, testimonials, clientLogos, insights } from '../data/content.js';
-import { photos, kavitha, brand, heroes, industryPhotos } from '../data/images.js';
+import { photos, kavitha, brand, heroes, industryPhotos, solutionPhotos } from '../data/images.js';
 import LogoMarquee from '../components/LogoMarquee.jsx';
 import CountUp from '../components/CountUp.jsx';
 import SolutionIcon from '../components/SolutionIcon.jsx';
@@ -24,10 +24,7 @@ export default function Home() {
         <img className="hero__swirl" src={brand.mark} alt="" aria-hidden="true" />
         <div className="container hero__grid">
           <div className="hero__copy">
-            <p className="hero__eyebrow">
-              <span className="hero__dot" aria-hidden="true" />
-              {site.tagline}
-            </p>
+            <p className="hero__eyebrow"><span className="hero__dot" aria-hidden="true" />{site.slogan}</p>
             <h1 className="hero__title">
               We don't just train people. <span className="hero__accent">We transform behaviour</span> that drives performance.
             </h1>
@@ -55,14 +52,14 @@ export default function Home() {
                 <dd><CountUp value={site.stats[1].value} /></dd>
               </div>
               <div>
-                <dt>Organisations served</dt>
-                <dd><CountUp value="40+" /></dd>
+                <dt>Clients</dt>
+                <dd><CountUp value="100+" /></dd>
               </div>
             </dl>
           </div>
 
           <div className="hero__visual">
-            <span className="hero__ring" aria-hidden="true" />
+            {/* <span className="hero__ring" aria-hidden="true" /> */}
             <img
               className="hero__person"
               src={kavitha.cutout}
@@ -87,8 +84,7 @@ export default function Home() {
       <section className="trust">
         <div className="container">
           <p className="trust__title">
-            Trusted by <strong>40+ organisations</strong> across corporate, manufacturing, retail,
-            hospitality and education
+            Trusted by <strong>100+ organisations</strong> Across India, Dubai & Malaysia, with a Growing Global Pipeline
           </p>
         </div>
         <LogoMarquee logos={clientLogos} />
@@ -130,10 +126,18 @@ export default function Home() {
           <div className="bento">
             {solutions.map((s, i) => (
               <Reveal key={s.slug} className="bento__cell" delay={(i % 3) * 80}>
-                <Link to={s.link || `/training-solutions/${s.slug}`} className="tile">
+                <Link to={s.link || `/training-solutions/${s.slug}`} className={i > 0 && solutionPhotos[s.slug] ? 'tile tile--cover' : 'tile'}>
+                  {i > 0 && solutionPhotos[s.slug] && (
+                    <span className="tile__cover">
+                      <img src={solutionPhotos[s.slug].src} alt={solutionPhotos[s.slug].alt} loading="lazy" decoding="async" />
+                    </span>
+                  )}
                   <span className="tile__icon" aria-hidden="true">
                     <SolutionIcon slug={s.slug} fallback={s.icon} />
                   </span>
+                  {i === 0 && solutionPhotos[s.slug] && (
+                    <img className="tile__img" src={solutionPhotos[s.slug].src} alt={solutionPhotos[s.slug].alt} loading="lazy" decoding="async" />
+                  )}
                   <h3>{s.title}</h3>
                   <p>{s.summary}</p>
                   {i === 0 && (
@@ -179,7 +183,7 @@ export default function Home() {
       {/* 5. Why 16Dimensions / credibility metrics */}
       <section className="section section--dark section--photo" style={{ '--bg-img': `url("${heroes.stats}")` }}>
         <div className="container">
-          <SectionHead eyebrow="Why 16Dimensions" title="Experience you can see on the job" center />
+          <SectionHead eyebrow="16Dimensions" title="Experience you can see on the job" center />
           <div className="stats">
             {site.stats.map((s, i) => (
               <Reveal key={s.label} className="stat" delay={i * 80}>
@@ -270,7 +274,7 @@ export default function Home() {
           <div className="gallery">
             {photos.homeGallery.map((p, i) => (
               <Reveal key={p.src} delay={(i % 3) * 60}>
-                <PhotoSlot src={p.src} alt={p.alt} ratio={i === 0 ? '16 / 10' : '4 / 3'} />
+                <PhotoSlot src={p.src} alt={p.alt} title={p.title} ratio={i === 0 ? '16 / 10' : '4 / 3'} />
               </Reveal>
             ))}
           </div>

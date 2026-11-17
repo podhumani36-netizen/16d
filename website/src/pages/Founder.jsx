@@ -33,9 +33,15 @@ export default function Founder() {
       <PageHero image={heroes.founder} imagePosition="center 12%" eyebrow="Founder" title="Kavitha Sasi" intro="Founder, 16Dimensions · Corporate Trainer · PoSH Consultant" />
 
       <section className="section">
-        <div className="container split split--top">
-          <Reveal>
-            <PhotoSlot src={kavitha.laptop} alt="Kavitha Sasi, founder of 16Dimensions" ratio="4 / 5" eager />
+        <div className="container split split--top founder-intro">
+          <Reveal className="founder-photo">
+            <figure className="founder-photo__frame">
+              <PhotoSlot src={kavitha.laptop} alt="Kavitha Sasi, founder of 16Dimensions" ratio="4 / 5" eager />
+              {/* <figcaption className="founder-photo__badge">
+                <strong>Kavitha Sasi</strong>
+                <span>Founder, 16Dimensions</span>
+              </figcaption> */}
+            </figure>
           </Reveal>
           <Reveal className="split__copy" delay={100}>
             <h2>Transforming how people work</h2>

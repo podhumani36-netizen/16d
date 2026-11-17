@@ -33,7 +33,7 @@ export default function Footer() {
       <div className="container footer__grid">
         <div className="footer__brand">
           <Logo />
-          <p className="footer__tag">{site.tagline}</p>
+          <p className="footer__tag">{site.slogan}</p>
           <p className="footer__msg">{site.message}</p>
         </div>
 
@@ -104,7 +104,14 @@ export default function Footer() {
       </div>
 
       <div className="container footer__bottom">
-        <p>Copyright © {new Date().getFullYear()} 16Dimensions. All rights reserved.</p>
+        <p>
+          Copyright © {new Date().getFullYear()} 16Dimensions. All rights reserved.
+          <span aria-hidden="true"> · </span>
+          Powered by{' '}
+          <a href="https://sagegfx.com/" target="_blank" rel="noopener noreferrer" className="footer__credit">
+            Sage GFX Digital Solutions
+          </a>
+        </p>
         <p>
           <Link to="/privacy-policy">Privacy Policy</Link>
           <span aria-hidden="true"> · </span>

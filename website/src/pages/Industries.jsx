@@ -8,7 +8,7 @@ import { heroes, industryPhotos } from '../data/images.js';
 export default function Industries() {
   usePageMeta(
     'Industry Solutions',
-    'Training for corporate, manufacturing, retail / QSR, hospitality, education and healthcare / services organisations in Chennai and across India.'
+    'Training for manufacturing, retail / QSR, hospitality, corporate, education and healthcare / services organisations in Chennai and across India.'
   );
 
   return (
