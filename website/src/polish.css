@@ -590,7 +590,7 @@
 .page-hero--photo {
   position: relative;
   isolation: isolate;
-  padding: 110px 0 96px;
+  padding: 72px 0 64px;
   border-bottom: 1px solid var(--line);
   color: var(--text);
   background: #fff;
@@ -616,7 +616,7 @@
 }
 @media (max-width: 700px) {
   .page-hero--photo {
-    padding: 72px 0 64px;
+    padding: 56px 0 48px;
   }
 }
 

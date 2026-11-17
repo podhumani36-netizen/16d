@@ -23,7 +23,6 @@ export const photos = {
   heroSession: { src: t(21), alt: 'Kavitha Sasi facilitating a customer-service workshop' },
   aboutTeam: { src: t(23), alt: 'Kavitha Sasi addressing employees during a training session' },
   homeGallery: [
-    { src: t(51), alt: 'Workshop in progress in a hotel conference hall' },
     { src: t(87), alt: 'Participants in a role-play activity' },
     { src: t(81), title: 'Hospitality Team Listening Session', alt: 'Hospitality team members listening during a facilitated discussion' },
     { src: t(80), title: 'Collaborative Rope Team Building Activity', alt: 'Participants working together in a rope-based team building exercise' },
