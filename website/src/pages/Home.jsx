@@ -91,7 +91,7 @@ export default function Home() {
       </section>
 
       {/* 2. When should you call 16Dimensions? */}
-      <section className="section" id="business-problems">
+      <section className="section section--compact-bottom" id="business-problems">
         <div className="container">
           <SectionHead
             eyebrow="Business problems we solve"
@@ -116,7 +116,7 @@ export default function Home() {
       </section>
 
       {/* 3. Training solution categories */}
-      <section className="section section--tint">
+      <section className="section section--tint section--compact-top">
         <div className="container">
           <SectionHead
             eyebrow="Training solutions"

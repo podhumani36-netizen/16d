@@ -446,6 +446,12 @@ a {
 .section {
   padding: 64px 0;
 }
+.section--compact-bottom {
+  padding-bottom: 28px;
+}
+.section--compact-top {
+  padding-top: 28px;
+}
 .section--tight {
   padding: 48px 0;
 }
@@ -1608,8 +1614,8 @@ a.post:hover h3 {
 .logos img {
   max-height: 48px;
   margin: 0 auto;
-  filter: grayscale(1);
-  opacity: 0.75;
+  filter: none;
+  opacity: 1;
   transition: filter 0.2s, opacity 0.2s;
 }
 .logos img:hover {

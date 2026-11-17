@@ -4,7 +4,7 @@ import Reveal from '../components/Reveal.jsx';
 import { PageHero, CTASection, ButtonLink, Checklist, SectionHead } from '../components/Blocks.jsx';
 import { solutions } from '../data/solutions.js';
 import { methodology } from '../data/content.js';
-import { heroes, solutionPhotos, solutionTrainingPhotos } from '../data/images.js';
+import { heroes, solutionPhotos } from '../data/images.js';
 import { site } from '../data/site.js';
 import SolutionIcon from '../components/SolutionIcon.jsx';
 
@@ -152,22 +152,6 @@ export default function Solutions() {
         primary={{ to: '/contact?enquiry=proposal', label: 'Request a customised proposal' }}
       />
 
-      <section className="section section--tint">
-        <div className="container">
-          <SectionHead
-            eyebrow="Training in action"
-            title="Learning that brings people together"
-            intro="A look inside the workshops, group activities and conversations that make each programme practical."
-          />
-          <ul className="photo-wall">
-            {solutionTrainingPhotos.map((photo) => (
-              <li key={photo.src}>
-                <img src={photo.src} alt={photo.alt} loading="lazy" decoding="async" />
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
     </>
   );
 }
